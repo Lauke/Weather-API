@@ -6,7 +6,7 @@
 
 function GetForecast(cityName) {
 
-  const url = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=470f22cc8a2f35fbc5b2273fa0d779e6&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=470f22cc8a2f35fbc5b2273fa0d779e6&units=metric`;
 
   // Fetching the Forecast for one particular city, in this case London
   // const url = 'http://api.openweathermap.org/data/2.5/forecast?q={London}&appid=470f22cc8a2f35fbc5b2273fa0d779e6&units=metric';
