@@ -16,10 +16,19 @@ function GetForecast(cityName) {
 
     .then(function (response) {
       // handle success
+      // console.log(response.data);
       // console.log(response.data.list[0].main.temp);
 
-      // Showing the temp on the screen
+      // Showing the temp of current day on the screen
       document.getElementById('target').innerHTML = `It is now ${response.data.list[0].main.temp}°C in ${cityName}`;
+
+      // 5 DAY FORECAST FOR LOOP
+
+      for (let i = 0; i < 5; i++) {
+      let forecast = response.data.list[i];
+      console.log(forecast);
+
+  }
 
     })
 
@@ -30,6 +39,7 @@ function GetForecast(cityName) {
     })
 
 }
+
 
 // 
 
