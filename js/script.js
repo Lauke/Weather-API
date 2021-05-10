@@ -25,7 +25,7 @@ function GetForecast(cityName) {
 
     .catch(function (error) {
       // handle error
-      document.getElementById('target').innerHTML = error;
+      document.getElementById('target').innerHTML = ('Please make sure the city is spelled correctly.');
       console.log(error);
     })
 
