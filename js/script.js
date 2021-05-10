@@ -1,4 +1,4 @@
-// API URL - 470f22cc8a2f35fbc5b2273fa0d779e6
+// API URL - d8d527c15354bfe5906040af032fc58a
 // Added &units=metric to the url because the temp needs to be converted to °C
 
 // Wrote a function so you can search on cityname (in the console)
@@ -6,10 +6,10 @@
 
 function GetForecast(cityName) {
 
-  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=470f22cc8a2f35fbc5b2273fa0d779e6&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=d8d527c15354bfe5906040af032fc58a&units=metric`;
 
   // Fetching the Forecast for one particular city, in this case London
-  // const url = 'http://api.openweathermap.org/data/2.5/forecast?q={London}&appid=470f22cc8a2f35fbc5b2273fa0d779e6&units=metric';
+  // const url = 'http://api.openweathermap.org/data/2.5/forecast?q={London}&appid=d8d527c15354bfe5906040af032fc58a&units=metric';
 
   // Make a request for a user with a given ID
   axios.get(url)
@@ -22,14 +22,6 @@ function GetForecast(cityName) {
       // Showing the temp of current day on the screen
       document.getElementById('target').innerHTML = `It is now ${response.data.list[0].main.temp}°C in ${cityName}`;
 
-      // 5 DAY FORECAST FOR LOOP
-
-      for (let i = 0; i < 5; i++) {
-      let forecast = response.data.list[i];
-      console.log(forecast);
-
-  }
-
     })
 
     .catch(function (error) {
@@ -39,9 +31,6 @@ function GetForecast(cityName) {
     })
 
 }
-
-
-// 
 
 window.onload = function () {
   document.getElementById('sendButton').onclick = function () {
