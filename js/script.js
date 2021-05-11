@@ -19,14 +19,14 @@ function GetForecast(cityName) {
 
       for (let i = 0; i < response.data.list.length; i += 8) {
 
-        // CREATING THE HTML PART 1
+        // CREATING THE HTML
         let icon = response.data.list[i].weather[0].icon
         let img = document.createElement('img')
         let h1 = document.createElement("h1");
         let h3 = document.createElement("h3");
         let h4 = document.createElement("h4");
         let div = document.createElement("div");
-        div.classList.add('one-day');
+        div.classList.add('card');
 
         // REFORMATTING THE DATE TO A DAY WITH MOMENT.JS
         const m = moment (response.data.list[i].dt_txt);
