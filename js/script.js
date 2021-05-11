@@ -18,35 +18,35 @@ function GetForecast(cityName) {
       let container = document.getElementById('container');
 
       for (let i = 0; i < response.data.list.length; i += 8) {
-
-        // CREATING THE HTML
+        
         let icon = response.data.list[i].weather[0].icon
         let img = document.createElement('img')
-        let h1 = document.createElement("h1");
+        let h2 = document.createElement("h2");
         let h3 = document.createElement("h3");
         let h4 = document.createElement("h4");
-        let div = document.createElement("div");
-        div.classList.add('card');
+        let divCard = document.createElement("div");
+        divCard.classList.add('col-sm-2', 'day');
 
         // REFORMATTING THE DATE TO A DAY WITH MOMENT.JS
         const m = moment (response.data.list[i].dt_txt);
         
         // CREATING THE HTML PART 2
-        let displaytitle = document.createTextNode(response.data.list[i].weather[0].description);
-        let displayDescription = document.createTextNode(m.format('dddd'));
-        let displayPrice = document.createTextNode(Math.round(response.data.list[i].main.temp));
+        let displayDescription = document.createTextNode(response.data.list[i].weather[0].description);
+        let displayDay = document.createTextNode(m.format('dddd'));
+        let displayTemp = document.createTextNode(Math.round(response.data.list[i].main.temp));
 
         img.setAttribute('src', `http://openweathermap.org/img/wn/${icon}.png`)
-        h1.appendChild(displaytitle);
-        h3.appendChild(displayDescription);
-        h4.appendChild(displayPrice);
+        h2.appendChild(displayDescription);
+        h3.appendChild(displayDay);
+        h4.appendChild(displayTemp);
 
-        div.appendChild(img);
-        div.appendChild(h1);
-        div.appendChild(h3);
-        div.appendChild(h4);
+        divCard.appendChild(img);
+        divCard.appendChild(h2);
+        divCard.appendChild(h3);
+        divCard.appendChild(h4);
 
-        document.body.appendChild(div);
+        document.querySelector('.row').appendChild(divCard); 
+
       }
 
       // Showing the temp of current day on the screen

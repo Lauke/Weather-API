@@ -1,9 +1,16 @@
-#container {
-padding: 15px;
+body {
+    width: 100%;
+    height: auto;
 }
 
-.card{
-    width: 20%;
-    float: left;
-    text-align: center;
+#container {
+    padding: 30px;
+
+}
+
+.day {
+    margin: 15px;
+    border-radius: 15px;
+    background-color: lightgrey;
+    height: 300px;
 }
