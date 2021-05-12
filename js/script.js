@@ -20,7 +20,7 @@ const getCity = async city => {
 
     // DOM ELEMENTS MANIPULATION (CHANGE THE SRC OF WEATHER-ICON DIV)
     let weatherIcon = document.querySelector('#weather-icon');
-    weatherIcon.setAttribute('src', `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`);
+    weatherIcon.setAttribute('src', `https://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`);
 
     // ONECALL API SHOWS DAILY INFO (HERE I TACKLE THE 5 DAY REPORT I WAS STRUGGELING WITH)
     let lon = response.coord.lon;
