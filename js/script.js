@@ -57,36 +57,39 @@ const getCity = async city => {
     function chooseImage() {
 
         if (response.weather[0].description === ('clear sky')) {
-            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+            return 'img/clear.jpg'
         }
         if (response.weather[0].description=== ('few clouds')) {
-            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+            return 'img/few.jpg'
+        }
+        if (response.weather[0].description === ('overcast clouds')) {
+            return 'img/overcast.jpg'
         }
         if (response.weather[0].description === ('scattered clouds')) {
-            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+            return 'img/scattered.jpg'
         }
         if (response.weather[0].description === ('broken clouds')) {
-            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+            return 'img/broken.jpg'
         }
         if (response.weather[0].description === ('shower rain')) {
-            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+            return 'img/heavy_rain.jpg'
         }
         if (response.weather[0].description === ('rain')) {
-            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+            return 'img/rain.jpg'
         }
         if (response.weather[0].description === ('light rain')) {
-            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+            return 'img/light_rain.jpg'
         }
         if (response.weather[0].description === ('thunderstorm')) {
-            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+            return 'img/thunderstorm.jpg'
         }
         if (response.weather[0].description === ('snow')) {
-            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+            return 'img/snow.jpg'
         }
         if (response.weather[0].description === ('mist')) {
-            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+            return 'img/mist.jpeg'
         } else {
-            return 'https://cdn.britannica.com/88/144988-050-9DFB235C/Black-Rock-Desert-Nevada.jpg'
+            return 'img/default.jpg'
         }
     }
 
