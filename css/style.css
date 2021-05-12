@@ -1,22 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 body {
-    width: 100%;
-    height: auto;
-    color: #031926;
+    padding: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    background-color: #fff2ee;
+    color: #242424;
 }
 
-#container {
-    padding: 30px;
+.form-control:focus {
+    border-color: #242424;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
 
+.btn {
+    background-color: #ec6e4c !important;
+    color:#ffffff !important;
+    border:none;
 }
 
-img {
-    width: 50px;
+.btn:hover {
+    background-color: #f08b6f !important;
+    color:#fff2ee !important;
 }
 
-.day {
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+.btn:active {
+    background-color: #ec6e4c !important;
+}
+
+.wrapper{
+    width: 350px;
+    margin-right: auto;
+    margin-left:  auto;
+    padding: 15px;
+    background-color: #ffffff;
+    border-radius: 25px;
+}
+
+ul {
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margins */
+}
+
+li {
+    list-style-type: none;
+    /* Remove bullets */
+    padding: 0;
+    /* Remove padding */
+    margin: 0;
+    /* Remove margins */
+}
+
+.search-part {
+    padding: 0px;
     margin: 15px;
-    border-radius: 15px;
-    background: rgb(238,174,202);
-    background: linear-gradient(0deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    height: 300px;
 }
+
+.search-button-part {
+    margin-top: 5px;
+}
+
+.today-part {
+    padding: 0px;
+    height: auto;
+    margin: 15px;
+}
+
+#display-city {
+    font-size: 2.2rem;
+}
+
+#display-description {
+    font-size: 1.25rem;
+}
+
+#display-main-temp {
+    font-size: 4rem;
+}
+
+
+.five-day-part {
+    padding: 0px;
+    margin: 15px;
+}
+
+#single-day {
+    margin: 15px;
+    display:table;
+    width:100%;
+    table-layout: fixed;
+    
+}
+
+#single-day span {
+    display:table-cell;
+    text-align:center;
+}
+

@@ -1,69 +1,57 @@
-// API URL - d8d527c15354bfe5906040af032fc58a
-// Added &units=metric to the url because the temp needs to be converted to °C
+// DECLARING THE INPUT
+const input = document.getElementById('get-city');
+const button = document.getElementById('btn-run');
 
-// Wrote a function so you can search on cityname (in the console)
-// Used string interpolation 
+// FETCHING THE FIRST API FOR TODAY'S INFO
+const getCity = async city => {
+    const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=d8d527c15354bfe5906040af032fc58a&units=metric`);
+    const response = await url.json();
 
-/* function GetForecast(cityName) {
- */
-const url = `https://api.openweathermap.org/data/2.5/forecast?q=London&appid=d8d527c15354bfe5906040af032fc58a&units=metric&exclude=current,minutely,hourly,alerts`;
+    // TRANSLATING THE UNIX TIMESTAMP TO A READABLE FORMAT
+    const m = moment (response.dt * 1000)
 
-// Make a request for a user with a given ID
-axios.get(url)
-  .then(function (response) {
+    // DOM ELEMENTS MANIPULATION
+    document.getElementById("display-city").innerHTML = response.name;
+    document.getElementById("display-date").innerHTML = `${(m.format('LL'))}`;
+    document.getElementById("display-main-temp").innerHTML = (`${Math.round(response.main.temp)}°`);
+    document.getElementById("display-description").innerHTML = response.weather[0].description;
+    document.getElementById("display-humidity").innerHTML = `Humidity: ${response.main.humidity} %`;
+    document.getElementById("display-wind").innerHTML = `Wind: ${response.wind.speed} km/h`;
 
-    //console.log(response)
+    // DOM ELEMENTS MANIPULATION (CHANGE THE SRC OF WEATHER-ICON DIV)
+    let weatherIcon = document.querySelector("#weather-icon");
+    weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`);
 
-    const today = new Date();
-    const day = 60 * 60 * 24 * 1000;
+    // ONECALL API SHOWS DAILY INFO ()
+    let lon = response.coord.lon;
+    let lat = response.coord.lat;
+    const forecastData = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=d8d527c15354bfe5906040af032fc58a&units=metric&exclude={current,minutely,hourly,alerts}`);
+    const res = await forecastData.json();
 
-    const dateBins = {};
-    const nBins = 6; // there can be reports for up to 6 distinct dates
+    // DOM MANIPULATION PART 2 (5 DAY REPORT)
+    let forecastElement = document.querySelector("#five-day-forecast");
+    forecastElement.innerHTML = null;
+    let forecast = null;
 
-    for (let i = 0; i < nBins; i++) {
+    // CREATED A FOR LOOP TO LOOP THROUGH DAILY INFO IN THE ONE CALL API (2nd)
+    // 1 TO 6 BECAUSE 5 DAYS (WITHOUT FIRST ARRAY(0) CAUSE THATS ALREADY SHOW)
+    for (let index = 1; index < 6; index++) {
+        forecast = res.daily[index];
+        console.log(forecast);
+        let date = new Date(forecast.dt * 1000);
+        let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friyay', 'Saturday'];
+        let name = days[date.getDay()];
 
-      // set up a bin (empty array) for each date
-      
-      const date = new Date(today.getTime() + i * day);
-      dateBins[date.getDate()] = [];
+        // CHANGING THE INNERHTML OF EACH ELEMENT (DAILY)
+        forecastElement.innerHTML +=
+            `<div id="single-day">
+            <span class="hourly-forecast-name">${name}</span>
+            <span class="hourly-forecast-temperature"> ${Math.round(forecast.temp.day)}°C</span>
+            </div>`;
+
     }
+}
 
-    const reports = response.data.list;
-    for (const report of reports) {
-      const reportDate = new Date(report.dt * 1000).getDate();
-      dateBins[reportDate].push(report);
-    }
+getCity('Roswell')
 
-    console.log(dateBins);
-    
-/* 
-     for (let i = 0; i < response.data.list.length; i += 8) {
-      let UnixTime = response.data.list[i].dt;
-      let myDate = new Date(UnixTime * 1000).toLocaleDateString("en", {
-        weekday: "long",
-      });
-
-      document.write(myDate)
-
-    } */
-
-
-  })
-
-  .catch(function (error) {
-    // handle error
-    document.getElementById('target').innerHTML = ('Please make sure the city is spelled correctly.');
-    console.log(error);
-  })
-
-/* } */
-
-/* window.onload = function () {
-  document.getElementById('sendButton').onclick = function () {
-    // Getting the city from the input
-    const cityName = document.getElementById('cityTextInput').value;
-    // Calling the getForecast function
-    GetForecast(cityName);
-  }
-
-} */
+button.addEventListener('click', () => getCity(input.value));
