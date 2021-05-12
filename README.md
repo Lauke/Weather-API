@@ -27,7 +27,7 @@
 * Found a way to translate spans into a table with css
 * Removed console.logs in js
 * Wrote a conditional statement based on the description of the weather
-* Added a default city (in this case Roswell)
+* Added a default city (in this case Miami)
 * Added a linear to the background image in the .js file
 * Added an else to add a default starting picture
 * Optimised images and added them

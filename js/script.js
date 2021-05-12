@@ -102,7 +102,7 @@ const getCity = async city => {
     
 }
 
-// CALLING THE FUNCTION WITH DEFAULT CITY ROSWELL
-getCity('Roswell')
+// CALLING THE FUNCTION WITH DEFAULT CITY MIAMI
+getCity('Miami')
 
 button.addEventListener('click', () => getCity(input.value));
