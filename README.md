@@ -32,13 +32,12 @@
 * Added an else to add a default starting picture
 * Optimised images and added them
 * Added some small media queries for mobile devices
+* Replaced all " with ' to create consistency in my coding
+* Removed the conditional statement as there are too many descriptions
+* I added the Unsplash API instead to replace the background
 
 ### Compability
 - [x] Firefox
 - [x] Chome
 - [x] Safari
 - [ ] Edge (not tested)
-
-
-### TO DO
-* Extra: implement unsplash api
