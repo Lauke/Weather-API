@@ -8,7 +8,7 @@ const getCity = async city => {
     const response = await url.json();
 
     // TRANSLATING THE UNIX TIMESTAMP TO A READABLE FORMAT
-    const m = moment (response.dt * 1000)
+    const m = moment(response.dt * 1000)
 
     // DOM ELEMENTS MANIPULATION
     document.getElementById("display-city").innerHTML = response.name;
@@ -22,7 +22,7 @@ const getCity = async city => {
     let weatherIcon = document.querySelector("#weather-icon");
     weatherIcon.setAttribute("src", `http://openweathermap.org/img/wn/${response.weather[0].icon}@2x.png`);
 
-    // ONECALL API SHOWS DAILY INFO ()
+    // ONECALL API SHOWS DAILY INFO (HERE I TACKLE THE 5 DAY REPORT I WAS STRUGGELING WITH)
     let lon = response.coord.lon;
     let lat = response.coord.lat;
     const forecastData = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=d8d527c15354bfe5906040af032fc58a&units=metric&exclude={current,minutely,hourly,alerts}`);
@@ -37,13 +37,12 @@ const getCity = async city => {
     // 1 TO 6 BECAUSE 5 DAYS (WITHOUT FIRST ARRAY(0) CAUSE THATS ALREADY SHOW)
     for (let index = 1; index < 6; index++) {
         forecast = res.daily[index];
-        console.log(forecast);
         let date = new Date(forecast.dt * 1000);
         let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friyay', 'Saturday'];
         let name = days[date.getDay()];
 
         // CHANGING THE INNERHTML OF EACH ELEMENT (DAILY)
-        forecastElement.innerHTML +=
+        forecastElement.innerHTML += // += ADDITION ASSIGNMENT, WILL CREATE THE DIV FOR THE 5 COMING DAYS
             `<div id="single-day">
             <span class="hourly-forecast-name">${name}</span>
             <span class="hourly-forecast-temperature"> ${Math.round(forecast.temp.day)}°C</span>
@@ -52,6 +51,7 @@ const getCity = async city => {
     }
 }
 
+// CALLING THE FUNCTION WITH DEFAULT CITY ROSWELL
 getCity('Roswell')
 
 button.addEventListener('click', () => getCity(input.value));
