@@ -47,8 +47,49 @@ const getCity = async city => {
             <span class="hourly-forecast-name">${name}</span>
             <span class="hourly-forecast-temperature"> ${Math.round(forecast.temp.day)}°C</span>
             </div>`;
-
     }
+
+    let backgroundImage = chooseImage();
+    document.body.style.background = (`linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(236, 110, 76, 0.73)), url('${backgroundImage}')`);
+
+    //linear-gradient(to bottom, rgba(245, 246, 252, 0.52), rgba(117, 19, 93, 0.73))
+    
+    function chooseImage() {
+
+        if (response.weather[0].description === ('clear sky')) {
+            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+        }
+        if (response.weather[0].description=== ('few clouds')) {
+            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+        }
+        if (response.weather[0].description === ('scattered clouds')) {
+            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+        }
+        if (response.weather[0].description === ('broken clouds')) {
+            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+        }
+        if (response.weather[0].description === ('shower rain')) {
+            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+        }
+        if (response.weather[0].description === ('rain')) {
+            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+        }
+        if (response.weather[0].description === ('light rain')) {
+            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+        }
+        if (response.weather[0].description === ('thunderstorm')) {
+            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+        }
+        if (response.weather[0].description === ('snow')) {
+            return 'https://thumbs.dreamstime.com/b/rain-water-drops-blue-27997826.jpg'
+        }
+        if (response.weather[0].description === ('mist')) {
+            return 'https://wpcdn.us-east-1.vip.tn-cloud.net/www.myneworleans.com/content/uploads/2021/04/r/y/gettyimages-1257951336.jpg'
+        } else {
+            return 'https://cdn.britannica.com/88/144988-050-9DFB235C/Black-Rock-Desert-Nevada.jpg'
+        }
+    }
+
 }
 
 // CALLING THE FUNCTION WITH DEFAULT CITY ROSWELL
