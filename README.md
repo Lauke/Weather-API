@@ -30,8 +30,15 @@
 * Added a default city (in this case Roswell)
 * Added a linear to the background image in the .js file
 * Added an else to add a default starting picture
+* Optimised images and added them
+* Added some small media queries for mobile devices
+
+### Compability
+- [x] Firefox
+- [x] Chome
+- [x] Safari
+- [ ] Edge (not tested)
 
 
 ### TO DO
-* Media queries
 * Extra: implement unsplash api
