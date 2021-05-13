@@ -4,7 +4,7 @@ const button = document.getElementById('btn-run');
 
 // FETCHING THE FIRST API FOR TODAY'S INFO
 const getCity = async city => {
-    const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=d8d527c15354bfe5906040af032fc58a&units=metric`);
+    const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={APIKEY}&units=metric`);
     const response = await url.json();
 
     // TRANSLATING THE UNIX TIMESTAMP TO A READABLE FORMAT
@@ -25,7 +25,7 @@ const getCity = async city => {
     // ONECALL API SHOWS DAILY INFO (HERE I TACKLE THE 5 DAY REPORT I WAS STRUGGELING WITH)
     let lon = response.coord.lon;
     let lat = response.coord.lat;
-    const forecastData = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=d8d527c15354bfe5906040af032fc58a&units=metric&exclude={current,minutely,hourly,alerts}`);
+    const forecastData = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid={APIKEY}&units=metric&exclude={current,minutely,hourly,alerts}`);
     const res = await forecastData.json();
 
     // DOM MANIPULATION PART 2 (5 DAY REPORT)
