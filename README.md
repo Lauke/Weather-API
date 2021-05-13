@@ -40,4 +40,4 @@
 - [x] Firefox
 - [x] Chome
 - [x] Safari
-- [ ] Edge (not tested)
+- [x] Edge
