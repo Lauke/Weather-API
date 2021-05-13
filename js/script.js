@@ -4,7 +4,7 @@ const button = document.getElementById('btn-run');
 
 // FETCHING THE FIRST API FOR TODAY'S INFO
 const getCity = async city => {
-    const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={APIKEY}&units=metric`);
+    const url = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid={API KEY}&units=metric`);
     const response = await url.json();
 
     // TRANSLATING THE UNIX TIMESTAMP TO A READABLE FORMAT
@@ -13,7 +13,7 @@ const getCity = async city => {
     // DOM ELEMENTS MANIPULATION
     document.getElementById('display-city').innerHTML = response.name;
     document.getElementById('display-date').innerHTML = `${(m.format('LL'))}`;
-    document.getElementById('display-main-temp').innerHTML = (`${Math.round(response.main.temp)}°`);
+    document.getElementById('display-main-temp').innerHTML = (`${Math.round(response.main.temp)}°C`);
     document.getElementById('display-description').innerHTML = response.weather[0].description;
     document.getElementById('display-humidity').innerHTML = `Humidity: ${response.main.humidity} %`;
     document.getElementById('display-wind').innerHTML = `Wind: ${response.wind.speed} km/h`;
@@ -25,7 +25,7 @@ const getCity = async city => {
     // ONECALL API SHOWS DAILY INFO (HERE I TACKLE THE 5 DAY REPORT I WAS STRUGGELING WITH)
     let lon = response.coord.lon;
     let lat = response.coord.lat;
-    const forecastData = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid={APIKEY}&units=metric&exclude={current,minutely,hourly,alerts}`);
+    const forecastData = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid={API KEY}&units=metric&exclude={current,minutely,hourly,alerts}`);
     const res = await forecastData.json();
 
     // DOM MANIPULATION PART 2 (5 DAY REPORT)
@@ -45,7 +45,8 @@ const getCity = async city => {
         forecastElement.innerHTML += // += ADDITION ASSIGNMENT, WILL CREATE THE DIV FOR THE 5 COMING DAYS
             `<div id='single-day'>
             <span class='hourly-forecast-name'>${name}</span>
-            <span class='hourly-forecast-temperature'> ${Math.round(forecast.temp.day)}°C</span>
+            <span><img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" alt=""/></span>
+            <span class='hourly-forecast-temperature'> ${Math.round(forecast.temp.min)} / ${Math.round(forecast.temp.max)}°C </span>
             </div>`;
     }
 
