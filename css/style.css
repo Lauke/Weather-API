@@ -102,7 +102,6 @@ li {
 }
 
 #single-day {
-    margin: 15px;
     display:table;
     width:100%;
     table-layout: fixed;
